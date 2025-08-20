@@ -42,6 +42,7 @@ const express_1 = __importDefault(require("express"));
 const db_config_1 = require("./config/db.config");
 const error_handler_middleware_1 = __importStar(require("./middlewares/error-handler.middleware"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const cors_1 = __importDefault(require("cors"));
 // Importing Routes
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const user_routes_1 = __importDefault(require("./routes/user.routes"));
@@ -51,12 +52,15 @@ const product_routes_1 = __importDefault(require("./routes/product.routes"));
 const wish_list_routes_1 = __importDefault(require("./routes/wish_list.routes"));
 const cart_routes_1 = __importDefault(require("./routes/cart.routes"));
 const order_routes_1 = __importDefault(require("./routes/order.routes"));
+const helmet_1 = __importDefault(require("helmet"));
 const PORT = process.env.PORT;
 const DB_URI = (_a = process.env.DB_URI) !== null && _a !== void 0 ? _a : "";
 const app = (0, express_1.default)();
 // Connect DB
 (0, db_config_1.connectDatabase)(DB_URI);
 // Using Middlewares
+app.use((0, cors_1.default)());
+app.use((0, helmet_1.default)());
 app.use(express_1.default.json({ limit: "5mb" }));
 app.use(express_1.default.urlencoded({ limit: "5mb", extended: true }));
 // Using Cookie Parser

@@ -5,6 +5,7 @@ import CustomError, {
   errorHandler,
 } from "./middlewares/error-handler.middleware";
 import cookieParser from "cookie-parser";
+import cors from 'cors'
 
 // Importing Routes
 import authRoutes from "./routes/auth.routes";
@@ -15,6 +16,7 @@ import productRoutes from "./routes/product.routes";
 import wishListRoutes from "./routes/wish_list.routes";
 import cartRoutes from "./routes/cart.routes";
 import orderRoutes from "./routes/order.routes";
+import helmet from "helmet";
 
 const PORT = process.env.PORT;
 const DB_URI = process.env.DB_URI ?? "";
@@ -25,6 +27,8 @@ const app = express();
 connectDatabase(DB_URI);
 
 // Using Middlewares
+app.use(cors());
+app.use(helmet());
 app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({ limit: "5mb", extended: true }));
 
