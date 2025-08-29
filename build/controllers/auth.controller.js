@@ -88,6 +88,7 @@ exports.login = (0, async_handler_utils_1.asyncHandler)((req, res, next) => __aw
         secure: process.env.NODE_ENV === "development" ? false : true,
         httpOnly: true,
         maxAge: Number(process.env.COOKIE_EXPIRY) * 24 * 60 * 60 * 1000,
+        sameSite: 'none'
     })
         .status(200)
         .json({
