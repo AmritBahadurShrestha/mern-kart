@@ -28,7 +28,7 @@ connectDatabase(DB_URI);
 
 // Using Middlewares
 app.use(cors({
-  origin: process.env.FRONT_END_URL || 'http://localhost:5173/',
+  origin: process.env.FRONT_END_URL || 'http://localhost:5173',
   credentials: true
 }));
 app.use(helmet());

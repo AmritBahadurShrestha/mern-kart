@@ -60,7 +60,7 @@ const app = (0, express_1.default)();
 (0, db_config_1.connectDatabase)(DB_URI);
 // Using Middlewares
 app.use((0, cors_1.default)({
-    origin: process.env.FRONT_END_URL || 'http://localhost:5173/',
+    origin: process.env.FRONT_END_URL || 'http://localhost:5173',
     credentials: true
 }));
 app.use((0, helmet_1.default)());
