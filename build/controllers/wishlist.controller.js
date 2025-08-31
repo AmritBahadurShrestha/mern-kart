@@ -57,14 +57,16 @@ exports.addToWishList = (0, async_handler_utils_1.asyncHandler)((req, res) => __
             success: true,
         });
     }
-    // if Not Exists -> Add it To List
-    user === null || user === void 0 ? void 0 : user.wish_list.push(productId);
-    yield (user === null || user === void 0 ? void 0 : user.save());
-    res.status(200).json({
-        message: "Product Added to WishList",
-        status: "success",
-        success: true,
-    });
+    else {
+        // if Not Exists -> Add it To List
+        user === null || user === void 0 ? void 0 : user.wish_list.push(productId);
+        yield (user === null || user === void 0 ? void 0 : user.save());
+        res.status(200).json({
+            message: "Product Added to WishList",
+            status: "success",
+            success: true,
+        });
+    }
 }));
 // Clear WishList
 exports.clearWishList = (0, async_handler_utils_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {

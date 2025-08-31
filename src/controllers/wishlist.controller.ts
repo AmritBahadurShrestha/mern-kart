@@ -60,8 +60,8 @@ export const addToWishList = asyncHandler(
         success: true,
       });
     }
-
-    // if Not Exists -> Add it To List
+    else {
+      // if Not Exists -> Add it To List
     user?.wish_list.push(productId);
 
     await user?.save();
@@ -71,6 +71,7 @@ export const addToWishList = asyncHandler(
       status: "success",
       success: true,
     });
+    }
   }
 );
 
