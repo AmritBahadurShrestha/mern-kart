@@ -21,7 +21,7 @@ const product_model_1 = __importDefault(require("../models/product.model"));
 exports.getWishList = (0, async_handler_utils_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const userId = req.user._id;
-    const user = yield user_model_1.default.findById(userId).populate("wish_list.product");
+    const user = yield user_model_1.default.findById(userId).populate("wish_list");
     if (!user) {
         throw new error_handler_middleware_1.default("User Not Found", 404);
     }

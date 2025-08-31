@@ -8,7 +8,7 @@ import Product from "../models/product.model";
 export const getWishList = asyncHandler(async (req: Request, res: Response) => {
   const userId = req.user._id;
 
-  const user = await User.findById(userId).populate("wish_list.product");
+  const user = await User.findById(userId).populate("wish_list");
 
   if (!user) {
     throw new CustomError("User Not Found", 404);
