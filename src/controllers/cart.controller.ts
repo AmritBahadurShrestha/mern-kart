@@ -60,7 +60,7 @@ export const create = asyncHandler(async (req: Request, res: Response) => {
 export const getCart = asyncHandler(async (req: Request, res: Response) => {
   const user = req.user._id;
 
-  const cart = await Cart.findOne({ user });
+  const cart = await Cart.findOne({ user }).populate('items.product');
 
   if (!cart) {
     throw new CustomError("Cart Not Created Yet", 400);
@@ -70,6 +70,7 @@ export const getCart = asyncHandler(async (req: Request, res: Response) => {
     message: "Cart Successfully Retrieved",
     status: "success",
     success: true,
+    data: cart
   });
 });
 

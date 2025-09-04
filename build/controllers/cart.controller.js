@@ -59,7 +59,7 @@ exports.create = (0, async_handler_utils_1.asyncHandler)((req, res) => __awaiter
 //* Get By User
 exports.getCart = (0, async_handler_utils_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = req.user._id;
-    const cart = yield cart_model_1.default.findOne({ user });
+    const cart = yield cart_model_1.default.findOne({ user }).populate('items.product');
     if (!cart) {
         throw new error_handler_middleware_1.default("Cart Not Created Yet", 400);
     }
@@ -67,6 +67,7 @@ exports.getCart = (0, async_handler_utils_1.asyncHandler)((req, res) => __awaite
         message: "Cart Successfully Retrieved",
         status: "success",
         success: true,
+        data: cart
     });
 }));
 //* Clear Cart
