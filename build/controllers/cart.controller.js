@@ -121,7 +121,7 @@ exports.updateCartItem = (0, async_handler_utils_1.asyncHandler)((req, res) => _
 //* Remove Item From Cart
 exports.removeCartItem = (0, async_handler_utils_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const userId = req.user._id;
-    const { productId } = req.body;
+    const { id: productId } = req.params;
     if (!productId) {
         throw new error_handler_middleware_1.default("ProductId is required", 400);
     }

@@ -148,7 +148,7 @@ export const updateCartItem = asyncHandler(
 export const removeCartItem = asyncHandler(
   async (req: Request, res: Response) => {
     const userId = req.user._id;
-    const { productId } = req.body;
+    const { id:productId } = req.params;
 
     if (!productId) {
       throw new CustomError("ProductId is required", 400);
