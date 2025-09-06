@@ -52,6 +52,7 @@ const product_routes_1 = __importDefault(require("./routes/product.routes"));
 const wish_list_routes_1 = __importDefault(require("./routes/wish_list.routes"));
 const cart_routes_1 = __importDefault(require("./routes/cart.routes"));
 const order_routes_1 = __importDefault(require("./routes/order.routes"));
+const dashboard_routes_1 = __importDefault(require("./routes/dashboard.routes"));
 const helmet_1 = __importDefault(require("helmet"));
 const PORT = process.env.PORT;
 const DB_URI = (_a = process.env.DB_URI) !== null && _a !== void 0 ? _a : "";
@@ -84,6 +85,7 @@ app.use("/api/product", product_routes_1.default);
 app.use("/api/wish_list", wish_list_routes_1.default);
 app.use("/api/cart", cart_routes_1.default);
 app.use("/api/order", order_routes_1.default);
+app.use("/api/dashboard", dashboard_routes_1.default);
 app.all("/{*all}", (req, res, next) => {
     const message = `Can not ${req.method} on ${req.originalUrl}`;
     const err = new error_handler_middleware_1.default(message, 404);
