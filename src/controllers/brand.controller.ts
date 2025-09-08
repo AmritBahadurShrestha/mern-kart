@@ -15,6 +15,10 @@ export const create = asyncHandler(async (req: Request, res: Response) => {
 
   const logo = req.file as Express.Multer.File;
 
+  if(!logo) {
+    throw new CustomError('Brand logo is required', 400)
+  }
+
   // Creating Brand Instance
   const brand = new Brand({ name, description });
 

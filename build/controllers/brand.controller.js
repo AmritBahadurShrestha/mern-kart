@@ -24,6 +24,9 @@ exports.create = (0, async_handler_utils_1.asyncHandler)((req, res) => __awaiter
     const { name, description } = req.body;
     console.log(req.file);
     const logo = req.file;
+    if (!logo) {
+        throw new error_handler_middleware_1.default('Brand logo is required', 400);
+    }
     // Creating Brand Instance
     const brand = new brand_model_1.default({ name, description });
     const { path, public_id } = yield (0, cloudinary_service_utils_1.uploadFile)(logo.path, folder_name);

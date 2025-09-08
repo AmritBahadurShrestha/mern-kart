@@ -16,7 +16,7 @@ import productRoutes from "./routes/product.routes";
 import wishListRoutes from "./routes/wish_list.routes";
 import cartRoutes from "./routes/cart.routes";
 import orderRoutes from "./routes/order.routes";
-import dashboardRouter from "./routes/dashboard.routes";
+import dashboardRoutes from "./routes/dashboard.routes";
 import helmet from "helmet";
 
 const PORT = process.env.PORT;
@@ -57,7 +57,7 @@ app.use("/api/product", productRoutes);
 app.use("/api/wish_list", wishListRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/order", orderRoutes);
-app.use("/api/dashboard", dashboardRouter);
+app.use("/api/dashboard", dashboardRoutes);
 
 app.all("/{*all}", (req: Request, res: Response, next: NextFunction) => {
   const message = `Can not ${req.method} on ${req.originalUrl}`;
