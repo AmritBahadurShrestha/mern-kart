@@ -19,7 +19,7 @@ export const create = asyncHandler(async (req: Request, res: Response) => {
 
 // Get All
 export const getAll = asyncHandler(async (req: Request, res: Response) => {
-  const categories = await Category.find({});
+  const categories = await Category.find({}).sort({ createdAt: -1});
 
   res.status(201).json({
     message: "All Categories Fetched Successfully",
