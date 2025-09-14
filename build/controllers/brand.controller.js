@@ -45,7 +45,7 @@ exports.create = (0, async_handler_utils_1.asyncHandler)((req, res) => __awaiter
 }));
 // Get All
 exports.getAll = (0, async_handler_utils_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const brands = yield brand_model_1.default.find({});
+    const brands = yield brand_model_1.default.find({}).sort({ createdAt: -1 });
     res.status(201).json({
         message: "All Brands Fetched Successfully",
         status: "success",
