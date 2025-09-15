@@ -108,7 +108,7 @@ export const getAll = asyncHandler(async (req: Request, res: Response) => {
   let filter: Record<string, any> = {};
 
   const page = Number(current_page) || 1;
-  const limit = Number(per_page) || 50;
+  const limit = Number(per_page) || 10;
   const skip = (page - 1) * limit;
 
   if (query) {
@@ -157,6 +157,7 @@ export const getAll = asyncHandler(async (req: Request, res: Response) => {
     .populate("brand")
     .populate("category")
     .populate("createdBy")
+    .sort({ createdAt: -1 })
     .limit(limit)
     .skip(skip);
 
