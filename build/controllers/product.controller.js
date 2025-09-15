@@ -83,7 +83,7 @@ exports.getAll = (0, async_handler_utils_1.asyncHandler)((req, res) => __awaiter
     const { current_page, per_page, query, category, brand, min_price, max_price, } = req.query;
     let filter = {};
     const page = Number(current_page) || 1;
-    const limit = Number(per_page) || 10;
+    const limit = Number(per_page) || 50;
     const skip = (page - 1) * limit;
     if (query) {
         filter.$or = [
